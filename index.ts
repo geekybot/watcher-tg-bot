@@ -10,8 +10,8 @@ app.use(bodyParser.json());
 app.post('/swap', async (req, res) => {
     try {
         let transaction = req.body[0];
-        let token = await parseBodyData(transaction);
-        // handleSwap(transaction.description, token);
+        let pd = await parseBodyData(transaction);
+        handleSwap(transaction.description, pd.tokenBAddress);
         res.status(200).send('OK');
     } catch (error) {
         res.status(200).send('Error');

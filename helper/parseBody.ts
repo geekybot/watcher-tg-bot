@@ -11,7 +11,6 @@ export async function parseBodyData(element) {
     let loop = true;
     for (let i = 0; i < instructions.length; i++) {
         if (instructions[i].programId === rayProgramId && loop) {
-            console.log("rayprogramm");
             let accounts = instructions[i].accounts;
             pd.tokenBAddress = accounts[5];
             pd.targetPool = accounts[11];
@@ -19,11 +18,19 @@ export async function parseBodyData(element) {
 
         } if (instructions[i].programId === jupProgramId && loop) {
             let accounts = instructions[i].accounts;
-            pd.tokenBAddress = accounts[5];
-            pd.targetPool = accounts[11];
+            pd.targetPool = accounts[1];
             loop = false;
         }
     }
+
+    for(let j = 0; j< element.tokenTransfers.length; j++){
+        if(element.tokenTransfers[j].mint !== 'So11111111111111111111111111111111111111112'){
+            pd.tokenBAddress = element.tokenTransfers[j].mint;
+        }
+    }
+    console.log(pd);
+    
+    return pd;
 
 }
 
