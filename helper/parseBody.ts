@@ -2,7 +2,7 @@
 const rayProgramId = '675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8';
 const jupProgramId = 'JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4';
 export async function parseBodyData(element) {
-    // console.log(JSON.stringify(element));
+    console.log(JSON.stringify(element));
     let pd: {
         tokenBAddress?: any,
         targetPool?: any
