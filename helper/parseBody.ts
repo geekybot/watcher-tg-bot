@@ -2,9 +2,8 @@
 const rayProgramId = '675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8';
 const jupProgramId = 'JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4';
 export async function parseBodyData(element) {
-    console.log(element);
+    console.log(JSON.stringify(element));
     let pd: {
-        tokenAAddress?: any,
         tokenBAddress?: any,
         targetPool?: any
     } = {};
@@ -13,12 +12,16 @@ export async function parseBodyData(element) {
     for (let i = 0; i < instructions.length; i++) {
         if (instructions[i].programId === rayProgramId && loop) {
             console.log("rayprogramm");
+            let accounts = instructions[i].accounts;
+            pd.tokenBAddress = accounts[5];
+            pd.targetPool = accounts[11];
             loop = false;
 
         } if (instructions[i].programId === jupProgramId && loop) {
             let accounts = instructions[i].accounts;
             pd.tokenBAddress = accounts[5];
             pd.targetPool = accounts[11];
+            loop = false;
         }
     }
 
