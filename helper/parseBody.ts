@@ -12,13 +12,12 @@ export async function parseBodyData(element) {
     for (let i = 0; i < instructions.length; i++) {
         if (instructions[i].programId === rayProgramId && loop) {
             let accounts = instructions[i].accounts;
-            pd.tokenBAddress = accounts[5];
             pd.targetPool = accounts[11];
             loop = false;
 
         } if (instructions[i].programId === jupProgramId && loop) {
             let accounts = instructions[i].accounts;
-            pd.targetPool = accounts[1];
+            pd.targetPool = accounts[11];
             loop = false;
         }
     }
