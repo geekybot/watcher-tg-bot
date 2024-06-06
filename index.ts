@@ -17,7 +17,7 @@ app.post('/swap', async (req, res) => {
         res.status(200).send('Error');
     }
 });
-const PORT = process.env.PORT || 33249;
+const PORT = process.env.PORT || 3324;
 
 app.listen(Number(PORT), '0.0.0.0', () => {
     console.log(`%c Webhook receiver listening on port ${PORT}`, "color: red; font-weight: bold;");
